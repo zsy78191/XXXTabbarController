@@ -2,6 +2,8 @@
 A tabbar controller based UIViewController with special user interaction and design.
 一个简单的TabbarController
 
+![](https://raw.githubusercontent.com/zsy78191/XXXTabbarController/master/tabbar.gif)
+
 ## How to use
 ###Step 1
 Make a subclass of XXXTabbarController.
@@ -57,7 +59,7 @@ Rewrite this funcion return the instance of managed viewcontroller
 ### Step 4
 Set tabbar frame and backgroundColor， tintColor at storyboard, `don't forget to link the tabbar to tabbarController`
 
-
+![](https://raw.githubusercontent.com/zsy78191/XXXTabbarController/master/intro.png)
 
 ##More
 
