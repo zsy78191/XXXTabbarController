@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Xxxtabbarcontroller by zsy78191</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Xxxtabbarcontroller</h1>
+        <p>A tabbar controller based UIViewController with special user interaction and design.</p>
+
+        <p class="view"><a href="https://github.com/zsy78191/XXXTabbarController">View the Project on GitHub <small>zsy78191/XXXTabbarController</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/zsy78191/XXXTabbarController/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/zsy78191/XXXTabbarController/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/zsy78191/XXXTabbarController">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="xxxtabbarcontroller" class="anchor" href="#xxxtabbarcontroller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>XXXTabbarController</h1>
+
+<p>A tabbar controller based UIViewController with special user interaction and design.
+一个简单的TabbarController</p>
+
+<p><img src="https://raw.githubusercontent.com/zsy78191/XXXTabbarController/master/tabbar.gif" alt=""></p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<h3>
+<a id="step-1" class="anchor" href="#step-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1</h3>
+
+<p>Make a subclass of XXXTabbarController.</p>
+
+<div class="highlight highlight-source-objc"><pre>#<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>XXXTabbarController.h<span class="pl-pds">"</span></span>
+<span class="pl-k">@interface</span> <span class="pl-en">ViewController</span> : <span class="pl-e">XXXTabbarController</span></pre></div>
+
+<h3>
+<a id="step-2" class="anchor" href="#step-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2</h3>
+
+<p>In <code>ViewController</code> ViewDidLoad function , call reloadData selector just like this</p>
+
+<div class="highlight highlight-source-objc"><pre> [<span class="pl-v">self</span> <span class="pl-c1">reloadData:</span>@[
+                       <span class="pl-c1">makeItem</span>(<span class="pl-s"><span class="pl-pds">@"</span>Favourite<span class="pl-pds">"</span></span>, [UIImage <span class="pl-c1">imageNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>i1<span class="pl-pds">"</span></span>]),
+                       <span class="pl-c1">makeItem</span>(<span class="pl-s"><span class="pl-pds">@"</span>Explore<span class="pl-pds">"</span></span>, [UIImage <span class="pl-c1">imageNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>i2<span class="pl-pds">"</span></span>]),
+                       <span class="pl-c1">makeItem</span>(<span class="pl-s"><span class="pl-pds">@"</span>Pictures<span class="pl-pds">"</span></span>, [UIImage <span class="pl-c1">imageNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>i3<span class="pl-pds">"</span></span>]),
+                       <span class="pl-c1">makeItem</span>(<span class="pl-s"><span class="pl-pds">@"</span>More<span class="pl-pds">"</span></span>, [UIImage <span class="pl-c1">imageNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>i4<span class="pl-pds">"</span></span>])
+                       ]];</pre></div>
+
+<p>first parameter with makeItem function is <code>Title</code>, second is name of icon image.</p>
+
+<h3>
+<a id="step-3" class="anchor" href="#step-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3</h3>
+
+<p>Rewrite this funcion return the instance of managed viewcontroller</p>
+
+<div class="highlight highlight-source-objc"><pre>- (UIViewController *)viewControllerAtIndex:(<span class="pl-k">NSUInteger</span>)idx
+{
+    <span class="pl-k">switch</span> (idx) {
+        <span class="pl-k">case</span> <span class="pl-c1">0</span>:
+        {
+            <span class="pl-k">return</span> [<span class="pl-v">self</span>.storyboard <span class="pl-c1">instantiateViewControllerWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>ViewController1<span class="pl-pds">"</span></span>];
+            <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">case</span> <span class="pl-c1">1</span>:
+        {
+            <span class="pl-k">return</span> [<span class="pl-v">self</span>.storyboard <span class="pl-c1">instantiateViewControllerWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>ViewController2<span class="pl-pds">"</span></span>];
+            <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">case</span> <span class="pl-c1">2</span>:
+        {
+            <span class="pl-k">return</span> [<span class="pl-v">self</span>.storyboard <span class="pl-c1">instantiateViewControllerWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>ViewController3<span class="pl-pds">"</span></span>];
+            <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">case</span> <span class="pl-c1">3</span>:
+        {
+            <span class="pl-k">return</span> [<span class="pl-v">self</span>.storyboard <span class="pl-c1">instantiateViewControllerWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>ViewController4<span class="pl-pds">"</span></span>];
+            <span class="pl-k">break</span>;
+        }
+        <span class="pl-k">default</span>:
+            <span class="pl-k">break</span>;
+    }
+    <span class="pl-k">return</span> <span class="pl-c1">nil</span>;
+}</pre></div>
+
+<h3>
+<a id="step-4" class="anchor" href="#step-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 4</h3>
+
+<p>Set tabbar frame and backgroundColor， tintColor at storyboard, <code>don't forget to link the tabbar to tabbarController</code></p>
+
+<p><img src="https://raw.githubusercontent.com/zsy78191/XXXTabbarController/master/intro.png" alt=""></p>
+
+<h2>
+<a id="more" class="anchor" href="#more" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More</h2>
+
+<ol>
+<li>XXXTabbarController use <a href="https://github.com/zsy78191/CustomEasingAnimation">CustomEasingAnimation</a> to make easing aniamtion.</li>
+<li>If you have any problem you can <a href="mailto:zcleeco@qq.com">e-mail</a> me.</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/zsy78191">zsy78191</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
