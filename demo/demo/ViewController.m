@@ -1,30 +1,31 @@
-# XXXTabbarController
-A tabbar controller based UIViewController with special user interaction and design.
-一个简单的TabbarController
+//
+//  ViewController.m
+//  demo
+//
+//  Created by 张超 on 16/4/20.
+//  Copyright © 2016年 gerinn. All rights reserved.
+//
 
-## How to use
-###Step 1
-Make a subclass of XXXTabbarController.
-```objc
-#import "XXXTabbarController.h"
-@interface ViewController : XXXTabbarController
-```
-###Step 2
-In `ViewController` ViewDidLoad function , call reloadData selector just like this
+#import "ViewController.h"
 
-```objc
- [self reloadData:@[
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self reloadData:@[
                        makeItem(@"Favourite", [UIImage imageNamed:@"i1"]),
                        makeItem(@"Explore", [UIImage imageNamed:@"i2"]),
                        makeItem(@"Pictures", [UIImage imageNamed:@"i3"]),
                        makeItem(@"More", [UIImage imageNamed:@"i4"])
                        ]];
-```
-first parameter with makeItem function is `Title`, second is name of icon image.
-### Step 3
-Rewrite this funcion return the instance of managed viewcontroller
+}
 
-```objc
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)idx
 {
     switch (idx) {
@@ -53,15 +54,10 @@ Rewrite this funcion return the instance of managed viewcontroller
     }
     return nil;
 }
-```
-### Step 4
-Set tabbar frame and backgroundColor， tintColor at storyboard, `don't forget to link the tabbar to tabbarController`
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
-
-##More
-
-1. XXXTabbarController use [CustomEasingAnimation](https://github.com/zsy78191/CustomEasingAnimation) to make easing aniamtion.
-2. If you have any problem you can [e-mail](mailto:zcleeco@qq.com) me.
-
-
+@end
